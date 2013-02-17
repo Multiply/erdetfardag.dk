@@ -3,7 +3,7 @@ calendarUrl  = 'https://www.google.com/calendar/feeds/tsfg1ml3g2l293ejpfgq8jedo4
 service      = false
 query        = false
 serviceQueue = []
-window._gaq  = [
+window._gaq  = _gaq = [
 	['_setAccount'   , 'UA-18291722-10']
 	['_setDomainName', 'erdetfardag.dk']
 	['_trackPageview']
@@ -65,10 +65,12 @@ $ ->
 		buttonSuccess.popover 'hide'
 		buttonWarning.popover 'hide'
 		isIt (bool) ->
+			_gaq.push ['_trackEvent', 'Clicks', 'Answers', 'Yes', if bool then 'Correct' else 'Wrong']
 			buttonPrimary.attr 'data-content', if bool then "Du har ret, det er fardag!" else "Ehm, hvad? Nej, det er ikke fardag i dag!"
 			buttonPrimary.popover 'toggle'
 
 	buttonSuccess.click ->
+		_gaq.push ['_trackEvent', 'Clicks', 'Answers', 'No', unless bool then 'Correct' else 'Wrong']
 		buttonPrimary.popover 'hide'
 		buttonWarning.popover 'hide'
 		isIt (bool) ->
@@ -76,6 +78,7 @@ $ ->
 			buttonSuccess.popover 'toggle'
 
 	buttonWarning.click ->
+		_gaq.push ['_trackEvent', 'Clicks', 'Answers', 'Stupid']
 		buttonPrimary.popover 'hide'
 		buttonSuccess.popover 'hide'
 		buttonWarning.attr 'data-content', "Ja, du er sgu for dum.<br>Prøv Google!"
