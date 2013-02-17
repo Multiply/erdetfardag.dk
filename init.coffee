@@ -3,7 +3,7 @@ calendarUrl  = 'https://www.google.com/calendar/feeds/tsfg1ml3g2l293ejpfgq8jedo4
 service      = false
 query        = false
 serviceQueue = []
-window._gaq  = _gaq = [
+window._gaq  = [
 	['_setAccount'   , 'UA-18291722-10']
 	['_setDomainName', 'erdetfardag.dk']
 	['_trackPageview']
