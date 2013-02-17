@@ -74,10 +74,10 @@
       });
     });
     buttonSuccess.click(function() {
-      _gaq.push(['_trackEvent', 'Clicks', 'Answers', 'No', !bool ? 'Correct' : 'Wrong']);
       buttonPrimary.popover('hide');
       buttonWarning.popover('hide');
       return isIt(function(bool) {
+        _gaq.push(['_trackEvent', 'Clicks', 'Answers', 'No', !bool ? 'Correct' : 'Wrong']);
         buttonSuccess.attr('data-content', bool ? "Wtf? Jo, det ER fardag!" : "Du har ret! Det er nemlig IKKE fardag i dag!");
         return buttonSuccess.popover('toggle');
       });

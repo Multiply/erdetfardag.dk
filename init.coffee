@@ -70,10 +70,10 @@ $ ->
 			buttonPrimary.popover 'toggle'
 
 	buttonSuccess.click ->
-		_gaq.push ['_trackEvent', 'Clicks', 'Answers', 'No', unless bool then 'Correct' else 'Wrong']
 		buttonPrimary.popover 'hide'
 		buttonWarning.popover 'hide'
 		isIt (bool) ->
+			_gaq.push ['_trackEvent', 'Clicks', 'Answers', 'No', unless bool then 'Correct' else 'Wrong']
 			buttonSuccess.attr 'data-content', if bool then "Wtf? Jo, det ER fardag!" else "Du har ret! Det er nemlig IKKE fardag i dag!"
 			buttonSuccess.popover 'toggle'
 
