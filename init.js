@@ -10,8 +10,15 @@
 
   serviceQueue = [];
 
+  window._gaq = [['_setAccount', 'UA-18291722-10'], ['_setDomainName', 'erdetfardag.dk'], ['_trackPageview']];
+
   google.setOnLoadCallback(function() {
-    var item, _i, _len;
+    var ga, item, s, _i, _len;
+    ga = document.createElement('script');
+    ga.async = true;
+    ga.src = 'http://www.google-analytics.com/ga.js';
+    s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
     service = new google.gdata.calendar.CalendarService('erdetfardag-app');
     query = new google.gdata.calendar.CalendarEventQuery(calendarUrl);
     for (_i = 0, _len = serviceQueue.length; _i < _len; _i++) {

@@ -1,10 +1,24 @@
-# Fetch data from our beloved Google Calendar
+# Google setup
 calendarUrl  = 'https://www.google.com/calendar/feeds/tsfg1ml3g2l293ejpfgq8jedo4%40group.calendar.google.com/public/full'
 service      = false
 query        = false
 serviceQueue = []
+window._gaq  = [
+	['_setAccount'   , 'UA-18291722-10']
+	['_setDomainName', 'erdetfardag.dk']
+	['_trackPageview']
+]
 
 google.setOnLoadCallback ->
+	# Analytics Script Element
+	ga = document.createElement 'script'
+	ga.async = true
+	ga.src   = 'http://www.google-analytics.com/ga.js'
+
+	s = document.getElementsByTagName('script')[0]
+	s.parentNode.insertBefore ga, s
+
+	# Calendar service and query
 	service = new google.gdata.calendar.CalendarService 'erdetfardag-app'
 	query   = new google.gdata.calendar.CalendarEventQuery calendarUrl
 
@@ -26,6 +40,7 @@ isIt = (cb) ->
 	else
 		serviceQueue.push cb
 
+# jQuery and Bootstrap setup
 $ ->
 	buttonPrimary = $ '.btn-primary'
 	buttonSuccess = $ '.btn-success'
