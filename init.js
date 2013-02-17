@@ -68,7 +68,7 @@
       buttonSuccess.popover('hide');
       buttonWarning.popover('hide');
       return isIt(function(bool) {
-        _gaq.push(['_trackEvent', 'Clicks', 'Answers', 'Yes', bool ? 'Correct' : 'Wrong']);
+        _gaq.push(['_trackEvent', 'Clicks', 'Answers', 'Yes', bool ? 1 : 0]);
         buttonPrimary.attr('data-content', bool ? "Du har ret, det er fardag!" : "Ehm, hvad? Nej, det er ikke fardag i dag!");
         return buttonPrimary.popover('toggle');
       });
@@ -77,7 +77,7 @@
       buttonPrimary.popover('hide');
       buttonWarning.popover('hide');
       return isIt(function(bool) {
-        _gaq.push(['_trackEvent', 'Clicks', 'Answers', 'No', !bool ? 'Correct' : 'Wrong']);
+        _gaq.push(['_trackEvent', 'Clicks', 'Answers', 'No', !bool ? 1 : 0]);
         buttonSuccess.attr('data-content', bool ? "Wtf? Jo, det ER fardag!" : "Du har ret! Det er nemlig IKKE fardag i dag!");
         return buttonSuccess.popover('toggle');
       });

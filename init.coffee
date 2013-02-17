@@ -65,7 +65,7 @@ $ ->
 		buttonSuccess.popover 'hide'
 		buttonWarning.popover 'hide'
 		isIt (bool) ->
-			_gaq.push ['_trackEvent', 'Clicks', 'Answers', 'Yes', if bool then 'Correct' else 'Wrong']
+			_gaq.push ['_trackEvent', 'Clicks', 'Answers', 'Yes', if bool then 1 else 0]
 			buttonPrimary.attr 'data-content', if bool then "Du har ret, det er fardag!" else "Ehm, hvad? Nej, det er ikke fardag i dag!"
 			buttonPrimary.popover 'toggle'
 
@@ -73,7 +73,7 @@ $ ->
 		buttonPrimary.popover 'hide'
 		buttonWarning.popover 'hide'
 		isIt (bool) ->
-			_gaq.push ['_trackEvent', 'Clicks', 'Answers', 'No', unless bool then 'Correct' else 'Wrong']
+			_gaq.push ['_trackEvent', 'Clicks', 'Answers', 'No', unless bool then 1 else 0]
 			buttonSuccess.attr 'data-content', if bool then "Wtf? Jo, det ER fardag!" else "Du har ret! Det er nemlig IKKE fardag i dag!"
 			buttonSuccess.popover 'toggle'
 
